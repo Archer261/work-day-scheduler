@@ -15,11 +15,64 @@ THEN the saved events persist */
 
 //HTML Variables
 var currentDayContainer = document.getElementById('currentDay');
-var mainContainer = document.getElementsByClassName('container');
+var mainContainer = document.querySelector('.container');
 
 
-//Current Time
+
+//Capture Current Day
 var currentDay = moment().format('dddd') + ', ' + moment().format('MMMM') + ' ' + moment().format('Do');
+
+// Display Current Day
 currentDayContainer.append(currentDay);
 
 
+
+
+//Determine Time of Day
+function timeOfDay() {
+
+}
+
+
+
+//Create Time Block Rows
+function createTimeBlockRow() {
+
+
+    var tbRow = $('<div>').addClass('row time-block');
+    var tbHour = $('<div>').addClass('hour col-md-1').text('3');
+    var tbText = $('<textarea>').addClass('textarea past col-md-10');
+    var tbSave = $('<button>').addClass('saveBtn col-md-1');
+    var tbSaveIcon = $('<i>').addClass('material-icons').text('save');
+
+
+    tbRow.appendTo(mainContainer);
+    tbHour.appendTo(tbRow);
+    tbText.appendTo(tbRow);
+    tbSave.appendTo(tbRow);
+    tbSaveIcon.appendTo(tbSave);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//Generate Time Blocks
+function createTimeBlocks() {
+    for (var i = 0; i < 10; i++) {
+        createTimeBlockRow();
+    }
+}
+
+// Build Time Blocks on Page Load
+createTimeBlocks();
