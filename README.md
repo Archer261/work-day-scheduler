@@ -1,6 +1,6 @@
 # work-day-scheduler
 
-![screenshot](./assets/images/screenshot.jpg)
+![screenshot](/assets/images/screenshot.jpg)
 
 ##Purpose:
 AS AN employee with a busy schedule
