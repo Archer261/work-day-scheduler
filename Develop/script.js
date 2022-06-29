@@ -17,6 +17,12 @@ THEN the saved events persist */
 var currentDayContainer = document.getElementById('currentDay');
 var mainContainer = document.querySelector('.container');
 
+//Captures Save Buttons After Page Load
+window.onload = function saveButtons() {
+    var saveButton = document.querySelector('.saveBtn');
+    return saveButton;
+}
+
 
 
 //Capture Current Day
@@ -65,7 +71,7 @@ function createTimeBlockRow() {
         var tbRow = $('<div>').addClass(`row time-block ${state}`);
         var tbHour = $('<div>').addClass('hour col-md-1').text(`${hr}`);
         var tbText = $('<textarea>').addClass(`textarea col-md-10`);
-        var tbSave = $('<button>').addClass('saveBtn col-md-1');
+        var tbSave = $('<button>').addClass('saveBtn col-md-1').attr('id', `hr-${hr}`);
         var tbSaveIcon = $('<i>').addClass('material-icons').text('save');
 
         // Creating the HTML DOM Vertical
@@ -81,9 +87,16 @@ function createTimeBlockRow() {
 }
 
 // Add Time Block Input Values to Local Storage
-/*$('.saveBtn').on('click', function (event) {
-    $(this).siblings()
-})
+window.onload = function saveButtons() {
+    var saveButton = document.querySelector('.saveBtn');
+    saveButton.addEventListener('click', function (event) {
+
+        console.log(event)
+        //localStorage.setItem(event.target.)
+
+        //alert("data has been saved");
+    });
+}
 
 // Build Time Blocks on Page Load*/
 createTimeBlockRow();

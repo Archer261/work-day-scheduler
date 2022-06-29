@@ -1,9 +1,15 @@
 # work-day-scheduler
 
+![screenshot](./assets/images/screenshot.jpg)
+
 ##Purpose:
 AS AN employee with a busy schedule
 I WANT to add important events to a daily planner
 SO THAT I can manage my time effectively
+
+
+
+##Objectives:
 
 1. WHEN I open the planner, THEN the current day is displayed at the top of the calendar
     
@@ -21,6 +27,10 @@ SO THAT I can manage my time effectively
 
     **Solution:** A textarea element is generated upon page load using a function
 
-5. WHEN I click the save button for that time block, THEN the text for that event is saved in local     storage
+5. WHEN I click the save button for that time block, THEN the text for that event is saved in local  storage
+
+    **Solution:** Add event listener function that takes in the click of a button element 
+
+6. WHEN I refresh the page, THEN the saved events persist
 
     **Solution:** 
