@@ -1,6 +1,6 @@
 # work-day-scheduler
 
-![screenshot](/assets/images/screenshot.jpg)
+![screenshot](assets/images/screenshot.JPG "Web App Screenshot")
 
 ##Purpose:
 AS AN employee with a busy schedule
