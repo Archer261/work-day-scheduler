@@ -40,15 +40,18 @@ function timeOfDay() {
     var currentHour = moment().format('H');
     for (var i in workDayHours) {
         if (workDayHours[i].hr < currentHour) {
-            workDayHours[i].state = 'past'
+            workDayHours[i].state = 'past';
+            
 
-        } else if (workDayHours[i].hr = currentHour) {
-            workDayHours[i].state = 'present'
+        } else if (workDayHours[i].hr === currentHour) {
+            workDayHours[i].state = 'present';
         } else {
-            workDayHours[i].state = 'future'
+            workDayHours[i].state = 'future';
         }
     }
+    //console.log(workDayHours)
     return workDayHours;
+
 }
 
 
@@ -88,13 +91,14 @@ function createTimeBlockRow() {
 
 // Add Time Block Input Values to Local Storage
 window.onload = function saveButtons() {
-    var saveButton = document.querySelector('.saveBtn');
-    saveButton.addEventListener('click', function (event) {
+    var saveButton = $('.saveBtn');
+    saveButton.on('click', function () {
 
-        console.log(event)
-        //localStorage.setItem(event.target.)
+        var timeHr = $(this).siblings(`.hour`).text()
+        //console.log(timeHr);
+        localStorage.setItem(timeHr, $(this).prev(`textarea`).val())
 
-        //alert("data has been saved");
+        alert("Event has been saved");
     });
 }
 
