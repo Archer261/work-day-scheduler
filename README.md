@@ -33,4 +33,4 @@ SO THAT I can manage my time effectively
 
 6. WHEN I refresh the page, THEN the saved events persist
 
-    **Solution:** 
+    **Solution:** Add function that stores text area values and along with hour value as the key/value pair in local storage.
