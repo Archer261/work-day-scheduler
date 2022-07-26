@@ -14,6 +14,7 @@ THEN the saved events persist */
 
 
 //HTML Variables
+var eventAlert = document.querySelector('.event-alert');
 var currentDayContainer = document.getElementById('currentDay');
 var mainContainer = document.querySelector('.container');
 
@@ -23,6 +24,15 @@ window.onload = function saveButtons() {
     return saveButton;
 }
 
+//Alert interval function
+function setAlert() {
+    console.log('test');
+    eventAlert.innerHTML = 'Event has been saved to local storage';
+}
+
+function clearAlert() {
+    eventAlert.innerHTML = "";
+}
 
 
 //Capture Current Day
@@ -39,11 +49,13 @@ function timeOfDay() {
     var workDayHours = [{ hr: 9, state: '' }, { hr: 10, state: '' }, { hr: 11, state: '' }, { hr: 12, state: '' }, { hr: 13, state: '' }, { hr: 14, state: '' }, { hr: 15, state: '' }, { hr: 16, state: '' }, { hr: 17, state: '' }];
     var currentHour = moment().format('H');
     for (var i in workDayHours) {
+        //console.log(currentHour)
         if (workDayHours[i].hr < currentHour) {
             workDayHours[i].state = 'past';
-            
 
-        } else if (workDayHours[i].hr === currentHour) {
+
+        } else if (workDayHours[i].hr == currentHour) {
+
             workDayHours[i].state = 'present';
         } else {
             workDayHours[i].state = 'future';
@@ -54,14 +66,10 @@ function timeOfDay() {
 
 }
 
-
 //Create Time Block Rows
 function createTimeBlockRow() {
 
     var workHours = timeOfDay();
-
-
-    //console.log(workHours);
 
     for (var i = 0; i < workHours.length; i++) {
         var state = workHours[i].state;
@@ -71,7 +79,7 @@ function createTimeBlockRow() {
 
 
         //Assigning Element Creation as Variables
-        var tbRow = $('<div>').addClass(`row time-block ${state}`);
+        var tbRow = $('<div>').addClass(`${state} row time-block`);
         var tbHour = $('<div>').addClass('hour col-md-1').text(`${hr}`);
         var tbText = $('<textarea>').addClass(`textarea col-md-10`);
         var tbSave = $('<button>').addClass('saveBtn col-md-1').attr('id', `hr-${hr}`);
@@ -93,12 +101,18 @@ function createTimeBlockRow() {
 window.onload = function saveButtons() {
     var saveButton = $('.saveBtn');
     saveButton.on('click', function () {
-
         var timeHr = $(this).siblings(`.hour`).text()
-        //console.log(timeHr);
         localStorage.setItem(timeHr, $(this).prev(`textarea`).val())
+        setAlert();
+        var timesRun = 0;
+        var interval = setInterval(function () {
+            timesRun += 1;
+            if (timesRun === 3) {
+                clearInterval(interval);
+                clearAlert();
+            }
+        }, 2000);
 
-        alert("Event has been saved");
     });
 }
 
